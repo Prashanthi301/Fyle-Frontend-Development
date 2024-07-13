@@ -1,0 +1,55 @@
+<form (ngSubmit)="onSubmit()" style="background-color: #f7f7f7; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+  <label style="color: #337ab7;">Username:</label>
+  <input type="text" [(ngModel)]="username" name="username" required style="width: 200px; padding: 10px; border: 1px solid #ddd;"><br><br>
+  <label style="color: #337ab7;">Workout Type:</label>
+  <select [(ngModel)]="workoutType" name="workoutType" required style="width: 200px; padding: 10px; border: 1px solid #ddd;">
+    <option value="Running">Running</option>
+    <option value="Cycling">Cycling</option>
+    <option value="Swimming">Swimming</option>
+  </select><br><br>
+  <label style="color: #337ab7;">Workout Minutes:</label>
+  <input type="number" [(ngModel)]="workoutMinutes" name="workoutMinutes" required style="width: 200px; padding: 10px; border: 1px solid #ddd;"><br><br>
+  <button type="submit" style="background-color: #337ab7; color: #ffffff; padding: 10px 20px; border: none; border-radius: 5px;">Add Workout</button>
+</form>
+
+  <div style="background-color: #f7f7f7; padding: 20px;">
+    <h2 style="color: #337ab7;">Workout List</h2>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" style="width: 200px; padding: 10px; border: 1px solid #ccc;">
+    <select [(ngModel)]="selectedWorkoutType" (change)="filterWorkouts()" style="width: 200px; padding: 10px; border: 1px solid #ccc;">
+      <option value="">All</option>
+      <option value="Running">Running</option>
+      <option value="Cycling">Cycling</option>
+      <option value="Swimming">Swimming</option>
+    </select>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: #337ab7; color: #ffffff;">
+        <tr>
+          <th style="padding: 10px; border: 1px solid #ddd;">Username</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Workout Type</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Workout Minutes</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Number of Workouts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;">John</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">Running</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">10 minutes</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">2</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;">Smith</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">Swimming</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">20 minutes</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">1</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;">Tina</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">Cycling</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">5 minutes</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">2</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="currentPage = $event" style="margin-top: 20px;"></pagination-controls>
+  </div>
