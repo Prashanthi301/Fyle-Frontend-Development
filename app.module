@@ -1,0 +1,25 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
+import { WorkoutFormComponent } from './workout-form/workout-form.component';
+import { WorkoutListComponent } from './workout-list/workout-list.component';
+import { WorkoutService } from './services/workout.services';
+import { FormsModule } from '@angular/forms';
+// workout.service.ts
+import { Injectable } from '@angular/core';
+import { Workout } from './workout.model';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class WorkoutService {
+  private workouts: Workout[] = []; // Properly typed and initialized as an empty array
+
+  constructor() {}
+
+  // Add methods for adding, retrieving workouts etc.
+  addWorkout(workout: Workout) {
+    this.workouts.push(workout);
+  }
+}
