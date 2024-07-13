@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { WorkoutService } from 'C:/Users/madam/OneDrive/Desktop/Angular/workout-app/src/app/services/workout.services';
+@NgModule({
+  providers: [WorkoutService]
+})
+@Component({
+  selector: 'app-workout-form',
+  templateUrl: './workout-form.component.html',
+  styleUrls: './workout-form.component.css' // Fix: changed 'components' to 'component'
+})
+export class WorkoutFormComponent {
+  username = '';
+  workoutType = '';
+  workoutMinutes = 0;
+
+  constructor(private workoutService: WorkoutService) { }
+
+  onSubmit() {
+    this.workoutService.addWorkout(this.username, this.workoutType, this.workoutMinutes);
+  }
+}
